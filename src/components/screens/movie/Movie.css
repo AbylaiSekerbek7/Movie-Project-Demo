@@ -1,5 +1,5 @@
-.movie {
-}
+.movie {}
+
 .movie-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -11,11 +11,13 @@
   font-weight: 700;
   text-decoration: none;
 }
+
 .movie__items {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 .movie__items__item {
   display: flex;
   flex-direction: column;
@@ -28,11 +30,11 @@
   margin-bottom: 20px;
 }
 
-.movie__items__item > img {
+.movie__items__item > a > img {
   height: 400px;
 }
 
-.movie__items__item > h3 {
+.movie__items__item > a {
   font-size: 16px;
   color: #fff;
   font-weight: 400;

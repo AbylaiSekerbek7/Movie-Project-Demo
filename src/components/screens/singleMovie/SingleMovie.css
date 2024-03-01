@@ -1,0 +1,44 @@
+.single-movie {}
+
+.single-movie_container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.single-movie_title {
+    font-size: 32px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.single-movie_card {
+    width: 1200px;
+    border: 3px solid #fff;
+    border-radius: 12px;
+    padding: 5px;
+    height: 640px;
+}
+
+.single-movie_card_poster {
+    width: 1200px;
+    height: 450px;
+}
+
+.single-movie_card_info { 
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.single-movie_card_title {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.single-movie_card_plot {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+}

@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../providers/ThemeProvider";
 import "./Header.css";
 const Header = () => {
+  const { theme, toggleTheme } = useTheme();
   return (
     <header className="header">
       <div className="header-container">
@@ -29,6 +31,7 @@ const Header = () => {
               </li>
             </ul>
           </nav>
+          <button onClick={() => toggleTheme()}>Theme {theme == "dark" ? "light" : "dark"}</button>
         </div>
       </div>
     </header>

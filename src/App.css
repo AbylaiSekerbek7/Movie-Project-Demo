@@ -3,3 +3,11 @@
   display: flex;
   flex-direction: column;
 }
+
+.dark_theme {
+  background: #000;
+}
+
+.light_theme {
+  background: #B4B4B8;
+}
