@@ -10,6 +10,8 @@ const SingleMovie = () => {
       item: {},
       isLoading: true,
   })
+  const [comments, setComments] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() =>  {
     axios
@@ -18,8 +20,29 @@ const SingleMovie = () => {
             isLoading: false,
             item: res.data,
         }));
+    axios.get("http://localhost:3001/comments").then((res) => { setComments(res.data); });
+    axios.get("http://localhost:3001/favorites").then((res) => { setFavorites(res.data); });
   }, []);
-  console.log(movie.item);
+
+  // Work with Favorite
+  const onFavorite = async (movie) => {
+    if (favorites.find((favorite) => favorite.id == movie?.imdbID)) {
+        return await axios.delete(`http://localhost:3001/favorites/${movie.imdbID}`).then(() => {
+            const updatedFavorite = favorites.filter((favorite) => favorite.id !== movie.imdbID);    
+            setFavorites(updatedFavorite);
+        })  
+    } 
+    else {
+        return await axios.post("http://localhost:3001/favorites", {
+            id: movie.imdbID
+        }).then((res) => {
+            setFavorites([...favorites, res.data]);
+        })
+    }
+  }
+  
+  const isFavorite = (id) => favorites.find((favorite) => favorite.id == id) ? true : false;
+
   return (
       <>
         <div className="single-movie">
@@ -36,6 +59,8 @@ const SingleMovie = () => {
                     <br />
                     <p className="single-movie_card_plot">Rating: {movie.item.imdbRating}</p>
                 </div>
+                <button onClick={() => onFavorite(movie.item)} style={{background: isFavorite(movie.item.imdbID) ? "blue" : "red"}}>Add to Favorite</button>
+
             </div>
         </div>
       </>
